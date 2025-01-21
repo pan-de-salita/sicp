@@ -3,6 +3,14 @@
 ;; READING:
 ;; Section 1.1, pages 1-31
 
+;; CONCEPTS
+;;
+;; --- COMPUTATIONAL PROCESS
+;; - Abstract things that inhabit computers
+;; - Evolves, the process of which is directed by a pattern of rules called a PROGRAM
+;; - Manipulates DATA
+;; PROGRAM (via PROGRAMMING LANGUAGES) -- (directs) -> COMPUTATIONAL PROCESS -- (to manipulate) -> DATA
+
 ;; QUOTABLES:
 ;;
 ;; --- Foreword
@@ -36,6 +44,18 @@
 ;; retaining the spirit and style of the original author.
 ;; - Mathematics provides a framework for dealing with notions of "what is". Computation provides
 ;; a framework for dealing precisely with notions of "how to".
+;;
+;; --- 1.0
+;; - The acts of the mind, wherein it exerts its power over simple ideas, are chiefly these three:
+;; 1. Combining several simple ideas into one compound one, and thus all complex ideas are made.
+;; 2. The second is bringing two ideas, whether simple or complex, together, and setting them by
+;; one another so as to take a view of them at once, without uniting them into one, by which it
+;; gets all its ideas of relations.
+;; 3. The third is separating them from all other ideas that accompany them in their real existence:
+;; this is called abstraction, and thus all its general ideas are made.
+;; - Well-designed computational systems, like well-designed automobiles or nuclear reactors, are
+;; designed in a modular manner, so that the parts can be constructed, replaced, and debugged
+;; separately.
 
 ;; THOUGHTS:
 ;;
@@ -71,5 +91,3 @@
 ;; 1. What we want to compute
 ;; 2. How we will decopose problems into manageable parts
 ;; 3. How we will work on the parts
-
-(define (square x) (* x x))
