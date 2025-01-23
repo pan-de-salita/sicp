@@ -4,7 +4,7 @@
 ;;;; 2.
 ;; [List-of Number] -> [List-of Number] | Null
 ;; Given a List of Numbers lon, returns a List of the squares of the Numbers.
-(define (squares lon [res null])
+(define (squares lon [res '()])
   (if (null? lon)
       res
       (squares (cdr lon) (append res (list (sqr (car lon)))))))
@@ -14,7 +14,7 @@
 
 ;;;; 3.
 ;; [List-of Symbol] -> [List-of Symbol] | Null
-;; Given a List of Symbols sent, returns a List of Symbols in which every instance of the words "I"
+;; Given a List of Symbols sent, returns a List of Symbols in which every instance of the word "I"
 ;; or "me" is replaced by "you", while every instance of "you" is replaced by "me" except at the
 ;; beginning of the sentence, where it's replaced by "I". Capitalization of letters is ignored.
 (define (switch sent)
@@ -23,7 +23,7 @@
           [(symbol=? sym 'you) 'i]
           [else sym]))
 
-  (define (switch-cdr sent-cdr [res null])
+  (define (switch-cdr sent-cdr [res '()])
     (cond [(null? sent-cdr) res]
           [(or (symbol=? (car sent-cdr) 'i) (symbol=? (car sent-cdr) 'me))
            (switch-cdr (cdr sent-cdr) (append res '(you)))]
@@ -33,7 +33,7 @@
                             (append res (list (car sent-cdr))))]))
 
   (if (null? sent)
-      null
+      '()
       (cons (switch-car (symbol-downcase (car sent)))
             (switch-cdr (cdr (sent-downcase sent))))))
 
@@ -84,7 +84,7 @@
 ;; [List-of Symbols] -> [List-of Symbols]
 ;; Given a List of Symbols los, returns a List of Symbols containing only those words of the argument
 ;; whose last letter is "E".
-(define (ends-e los [res null])
+(define (ends-e los [res '()])
   (if (null? los)
       res
       (ends-e (cdr los)
@@ -104,5 +104,25 @@
                (sub1 (string-length (symbol->string sym))))))
 
 (check-expect (symbol-last-char 'word) 'd)
+
+;;;; 6.
+;; Function that does not terminate. For testing purposes only.
+(define (endless) (endless))
+
+;; Boolean Boolean -> Boolean
+;; Specifies or as a normal procedure.
+(define (or-normal x y)
+  (or x y))
+
+(or-normal #t (endless)) ;; => Does not terminate.
+(or #t (endless)) ;; => #t
+
+;; Boolean Boolean -> Boolean
+;; Specifies and as a normal procedure.
+(define (and-normal x y)
+  (and x y))
+
+(and-normal #t #f (endless)) ;; => Does not terminate.
+(and #t #f (endless)) ;; => #f
 
 (test)
